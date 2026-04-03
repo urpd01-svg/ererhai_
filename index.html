@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=960, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>얼얼하이 가맹문의 신청서</title>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <style>
@@ -330,10 +330,104 @@
       line-height: 1.8;
     }
 
-    /* ── 반응형: 항상 가로형 유지, 작은 화면은 스케일 축소 ── */
-    @media (max-width: 960px) {
-      body { align-items: flex-start; padding: 12px; }
-      .card { max-width: 100%; }
+    /* ── 모바일: 세로형, 한 화면에 딱 맞게 ── */
+    @media (max-width: 700px) {
+      body {
+        padding: 12px;
+        align-items: flex-start;
+      }
+
+      .card {
+        max-width: 100%;
+      }
+
+      /* 헤더: 로고+텍스트 가로 배치로 작게 */
+      .card-header {
+        flex-direction: row;
+        text-align: left;
+        padding: 14px 16px;
+        gap: 12px;
+      }
+
+      .logo-wrap {
+        width: 64px;
+        height: 64px;
+        flex-shrink: 0;
+      }
+
+      .logo-wrap .logo-img {
+        width: 64px;
+        height: 64px;
+      }
+
+      .logo-badge {
+        bottom: -8px;
+        font-size: 8px;
+        padding: 3px 7px;
+      }
+
+      .header-info h1 { font-size: 14px; margin-bottom: 3px; }
+      .header-info p  { font-size: 11px; }
+
+      /* 본문: 가로 → 세로 */
+      .card-body {
+        flex-direction: column;
+      }
+
+      /* 왼쪽 패널: 가로로 나란히 */
+      .photo-side {
+        width: 100%;
+        flex-direction: row;
+        padding: 12px 14px;
+        gap: 12px;
+        align-items: center;
+      }
+
+      .photo-box {
+        width: 110px;
+        height: 100px;
+        flex-shrink: 0;
+        border-radius: 10px;
+        overflow: hidden;
+      }
+
+      .photo-box img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .tel-box {
+        flex: 1;
+        padding: 10px;
+        border-radius: 10px;
+      }
+
+      .tel-box .tel-label { font-size: 11px; }
+      .tel-box .tel-num   { font-size: 16px; }
+
+      /* 폼 */
+      .form-side {
+        padding: 16px 16px 18px;
+      }
+
+      .fields { gap: 10px; }
+
+      .section-title { font-size: 11px; margin-bottom: 10px; }
+
+      .form-group label { font-size: 11px; }
+
+      .form-group input {
+        padding: 9px 12px;
+        font-size: 13px;
+      }
+
+      .form-footer { margin-top: 14px; }
+
+      .submit-btn {
+        padding: 12px;
+        font-size: 13px;
+      }
     }
   </style>
 </head>

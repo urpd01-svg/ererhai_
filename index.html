@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=960, initial-scale=1.0" />
   <title>얼얼하이 가맹문의 신청서</title>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <style>
@@ -330,26 +330,10 @@
       line-height: 1.8;
     }
 
-    /* ── 모바일 ── */
-    @media (max-width: 600px) {
-      .card-body { flex-direction: column; }
-
-      .photo-side {
-        width: 100%;
-        flex-direction: row;
-        flex-wrap: wrap;
-        padding: 16px;
-        gap: 12px;
-      }
-
-      .photo-box { flex: 1; min-width: 140px; }
-      .tel-box   { flex: 1; min-width: 120px; justify-content: center; }
-
-      .form-group {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 5px;
-      }
+    /* ── 반응형: 항상 가로형 유지, 작은 화면은 스케일 축소 ── */
+    @media (max-width: 960px) {
+      body { align-items: flex-start; padding: 12px; }
+      .card { max-width: 100%; }
     }
   </style>
 </head>
@@ -361,7 +345,7 @@
   <div class="card-header">
     <div class="logo-wrap">
       <div class="logo-img">
-        <img src="images/logo.jpg" alt="얼얼하이 로고" />
+        <img id="logoImg" src="https://www.genspark.ai/api/files/s/GeeehtCD" alt="얼얼하이 로고" onerror="this.src='images/logo.jpg'" />
       </div>
       <span class="logo-badge">마라꼬치 &amp; 마라컵볶이</span>
     </div>
@@ -377,7 +361,7 @@
     <!-- 왼쪽 패널 -->
     <div class="photo-side">
       <div class="photo-box">
-        <img src="images/skewer.jpg" alt="마라꼬치" />
+        <img id="skewerImg" src="https://www.genspark.ai/api/files/s/GWp1LQxP" alt="마라꼬치" onerror="this.src='images/skewer.jpg'" />
       </div>
       <div class="tel-box">
         <span class="tel-label">📞 가맹문의</span>
@@ -449,6 +433,8 @@
 
 <script>
   const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyt5YmUmMlzXNm8i-NzxwlpxD9cLpMCTyX0V-CTDbcXBaYTRycn13jago2JLz8NTYHh3Q/exec';
+
+
 
   /* 휴대폰 자동 하이픈 */
   document.getElementById('phone').addEventListener('input', function () {

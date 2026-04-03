@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>얼얼하이 가맹문의 신청서</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      background: linear-gradient(150deg, #4a0808 0%, #7a1010 50%, #9e1818 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    /* ────────────────────────────────
+       카드 — 가로가 긴 사각형
+    ──────────────────────────────── */
+    .card {
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 20px 56px rgba(0,0,0,0.5);
+      width: 100%;
+      max-width: 760px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ────────────────────────────────
+       상단 헤더 — 로고 + 타이틀
+    ──────────────────────────────── */
+    .card-header {
+      background: linear-gradient(135deg, #6e0d0d 0%, #c0392b 100%);
+      padding: 22px 24px 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 18px;
+    }
+
+    .logo-wrap {
+      position: relative;
+      width: 88px;
+      height: 88px;
+      flex-shrink: 0;
+    }
+
+    .logo-wrap .logo-img {
+      width: 88px;
+      height: 88px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 3px solid rgba(255, 210, 0, 0.7);
+      box-shadow: 0 3px 16px rgba(0,0,0,0.45);
+    }
+
+    .logo-wrap .logo-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center center;
+      display: block;
+    }
+
+    .logo-badge {
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, #e8650a, #f5922a);
+      color: #fff;
+      font-size: 9px;
+      font-weight: 800;
+      white-space: nowrap;
+      padding: 4px 9px;
+      border-radius: 20px;
+      box-shadow: 0 2px 8px rgba(232,101,10,0.55);
+      letter-spacing: 0.3px;
+      border: 1.5px solid rgba(255,255,255,0.4);
+    }
+
+    .header-info h1 {
+      font-size: 17px;
+      font-weight: 900;
+      color: #fff;
+      letter-spacing: -0.3px;
+      margin-bottom: 5px;
+    }
+
+    .header-info p {
+      font-size: 12px;
+      color: rgba(255,255,255,0.82);
+      line-height: 1.6;
+    }
+
+    /* ────────────────────────────────
+       본문 — 좌(사진) + 우(폼)
+    ──────────────────────────────── */
+    .card-body {
+      display: flex;
+      flex: 1;
+    }
+
+    /* 왼쪽 패널 */
+    .photo-side {
+      width: 240px;
+      flex-shrink: 0;
+      background: #fdf0f0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      padding: 22px 18px;
+    }
+
+    /* 꼬치 이미지 박스 */
+    .photo-box {
+      width: 100%;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 2px solid #f5c6c6;
+      box-shadow: 0 4px 16px rgba(192,57,43,0.12);
+      background: #fff;
+    }
+
+    .photo-box img {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    /* 전화번호 박스 */
+    .tel-box {
+      width: 100%;
+      background: linear-gradient(135deg, #9b1a1a, #c0392b);
+      border: none;
+      border-radius: 12px;
+      padding: 14px 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5px;
+      box-shadow: 0 4px 14px rgba(192,57,43,0.35);
+    }
+
+    .tel-box .tel-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.85);
+      letter-spacing: 0.5px;
+    }
+
+    .tel-box .tel-num {
+      font-size: 18px;
+      font-weight: 900;
+      color: #fff;
+      letter-spacing: 0.5px;
+    }
+
+    /* 오른쪽 폼 */
+    .form-side {
+      flex: 1;
+      padding: 28px 28px 26px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .section-title {
+      font-size: 12px;
+      font-weight: 700;
+      color: #c0392b;
+      letter-spacing: 0.4px;
+      margin-bottom: 14px;
+      display: inline-block;
+      padding-bottom: 6px;
+      background: linear-gradient(to right, #c0392b, rgba(192,57,43,0)) bottom / 100% 2px no-repeat;
+    }
+
+    .fields {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .form-group label {
+      font-size: 12px;
+      font-weight: 700;
+      color: #444;
+    }
+
+    .form-group label .req {
+      color: #c0392b;
+      margin-left: 1px;
+    }
+
+    .input-wrap {
+      flex: 1;
+      position: relative;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 13px 16px;
+      border: 1.5px solid #e5e5e5;
+      border-radius: 9px;
+      font-size: 14px;
+      font-family: 'Noto Sans KR', sans-serif;
+      color: #222;
+      background: #fafafa;
+      outline: none;
+      transition: border-color 0.18s, box-shadow 0.18s, background 0.18s;
+    }
+
+    .form-group input::placeholder { color: #ccc; }
+
+    .form-group input:focus {
+      border-color: #c0392b;
+      background: #fff;
+      box-shadow: 0 0 0 3px rgba(192,57,43,0.09);
+    }
+
+    .form-group input.error {
+      border-color: #e74c3c;
+      background: #fff9f9;
+    }
+
+    .error-msg {
+      display: none;
+      font-size: 10px;
+      color: #e74c3c;
+      margin-top: 3px;
+      font-weight: 500;
+    }
+    .error-msg.show { display: block; }
+
+    /* 하단 — 버튼만 */
+    .form-footer {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .submit-btn {
+      flex: 1;
+      padding: 13px;
+      background: linear-gradient(135deg, #6e0d0d, #c0392b);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 700;
+      font-family: 'Noto Sans KR', sans-serif;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: transform 0.15s, box-shadow 0.15s, opacity 0.15s;
+    }
+
+    .submit-btn:hover:not(:disabled) {
+      transform: translateY(-1px);
+      box-shadow: 0 5px 16px rgba(192,57,43,0.38);
+    }
+
+    .submit-btn:disabled { opacity: 0.65; cursor: not-allowed; }
+
+    /* 스피너 */
+    .spinner {
+      width: 14px;
+      height: 14px;
+      border: 2px solid rgba(255,255,255,0.3);
+      border-top-color: #fff;
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+      display: none;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ── 성공 화면 ── */
+    .success-screen {
+      display: none;
+      flex: 1;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 24px;
+      text-align: center;
+    }
+
+    .success-icon {
+      font-size: 54px;
+      margin-bottom: 14px;
+      animation: pop 0.45s ease;
+    }
+
+    @keyframes pop {
+      0%   { transform: scale(0.5); opacity: 0; }
+      80%  { transform: scale(1.1); }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    .success-screen h2 {
+      font-size: 19px;
+      font-weight: 800;
+      color: #222;
+      margin-bottom: 8px;
+    }
+
+    .success-screen p {
+      font-size: 13px;
+      color: #888;
+      line-height: 1.8;
+    }
+
+    /* ── 모바일 ── */
+    @media (max-width: 600px) {
+      .card-body { flex-direction: column; }
+
+      .photo-side {
+        width: 100%;
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding: 16px;
+        gap: 12px;
+      }
+
+      .photo-box { flex: 1; min-width: 140px; }
+      .tel-box   { flex: 1; min-width: 120px; justify-content: center; }
+
+      .form-group {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="card">
+
+  <!-- ── 상단 헤더 ── -->
+  <div class="card-header">
+    <div class="logo-wrap">
+      <div class="logo-img">
+        <img src="images/logo.jpg" alt="얼얼하이 로고" />
+      </div>
+      <span class="logo-badge">마라꼬치 &amp; 마라컵볶이</span>
+    </div>
+    <div class="header-info">
+      <h1>얼얼하이 가맹문의 신청서</h1>
+      <p>간단히 작성해주시면 확인 후 빠르게 연락드리겠습니다 🙏</p>
+    </div>
+  </div>
+
+  <!-- ── 본문 ── -->
+  <div class="card-body" id="cardBody">
+
+    <!-- 왼쪽 패널 -->
+    <div class="photo-side">
+      <div class="photo-box">
+        <img src="images/skewer.jpg" alt="마라꼬치" />
+      </div>
+      <div class="tel-box">
+        <span class="tel-label">📞 가맹문의</span>
+        <span class="tel-num">1688-8156</span>
+      </div>
+    </div>
+
+    <!-- 오른쪽 폼 -->
+    <div class="form-side">
+      <form id="inquiryForm" novalidate>
+        <p class="section-title">✏️ 신청 정보 입력</p>
+        <div class="fields">
+
+          <div class="form-group">
+            <label>성함 <span class="req">*</span></label>
+            <div class="input-wrap">
+              <input type="text" id="name" placeholder="홍길동" />
+              <div class="error-msg" id="nameErr">성함을 입력해주세요.</div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>나이 <span class="req">*</span></label>
+            <div class="input-wrap">
+              <input type="number" id="age" placeholder="예) 35" min="1" max="99" />
+              <div class="error-msg" id="ageErr">나이를 입력해주세요.</div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>휴대폰번호 <span class="req">*</span></label>
+            <div class="input-wrap">
+              <input type="tel" id="phone" placeholder="010-0000-0000" maxlength="13" />
+              <div class="error-msg" id="phoneErr">올바른 휴대폰번호를 입력해주세요.</div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>원하시는 지역 <span class="req">*</span></label>
+            <div class="input-wrap">
+              <input type="text" id="region" placeholder="예) 서울 강남구" />
+              <div class="error-msg" id="regionErr">원하시는 지역을 입력해주세요.</div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- 제출 버튼 -->
+        <div class="form-footer">
+          <button type="submit" class="submit-btn" id="submitBtn">
+            <div class="spinner" id="spinner"></div>
+            <span id="btnText">신청서 제출하기 🔥</span>
+          </button>
+        </div>
+
+      </form>
+    </div>
+
+  </div><!-- /card-body -->
+
+  <!-- ── 성공 화면 ── -->
+  <div class="success-screen" id="successScreen">
+    <div class="success-icon">🎉</div>
+    <h2>신청이 완료되었습니다!</h2>
+    <p>가맹문의 신청을 받았습니다.<br>담당자 확인 후 빠르게 연락드리겠습니다.<br><br>감사합니다 😊</p>
+  </div>
+
+</div><!-- /card -->
+
+<script>
+  const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyt5YmUmMlzXNm8i-NzxwlpxD9cLpMCTyX0V-CTDbcXBaYTRycn13jago2JLz8NTYHh3Q/exec';
+
+  /* 휴대폰 자동 하이픈 */
+  document.getElementById('phone').addEventListener('input', function () {
+    let v = this.value.replace(/\D/g, '');
+    if (v.length > 7)      v = v.slice(0,3) + '-' + v.slice(3,7) + '-' + v.slice(7,11);
+    else if (v.length > 3) v = v.slice(0,3) + '-' + v.slice(3);
+    this.value = v;
+  });
+
+  /* 유효성 표시 */
+  function setErr(inputId, errId, show) {
+    document.getElementById(inputId).classList.toggle('error', show);
+    document.getElementById(errId).classList.toggle('show', show);
+  }
+
+  /* 폼 제출 */
+  document.getElementById('inquiryForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const name   = document.getElementById('name').value.trim();
+    const age    = document.getElementById('age').value.trim();
+    const phone  = document.getElementById('phone').value.trim();
+    const region = document.getElementById('region').value.trim();
+    const phoneOk = /^01[0-9]-\d{3,4}-\d{4}$/.test(phone);
+
+    setErr('name',   'nameErr',   !name);
+    setErr('age',    'ageErr',    !age);
+    setErr('phone',  'phoneErr',  !phoneOk);
+    setErr('region', 'regionErr', !region);
+
+    if (!name || !age || !phoneOk || !region) return;
+
+    /* 로딩 */
+    const btn = document.getElementById('submitBtn');
+    btn.disabled = true;
+    document.getElementById('spinner').style.display = 'block';
+    document.getElementById('btnText').textContent = '제출 중...';
+
+    /* Google Sheets 전송 */
+    fetch(SCRIPT_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify({ name, age, phone, region })
+    })
+    .then(r => r.text())
+    .then(d => { console.log('응답:', d); showSuccess(); })
+    .catch(err => { console.error('오류:', err); showSuccess(); });
+  });
+
+  function showSuccess() {
+    document.getElementById('cardBody').style.display = 'none';
+    document.getElementById('successScreen').style.display = 'flex';
+  }
+</script>
+
+</body>
+</html>
